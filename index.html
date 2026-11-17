@@ -552,7 +552,7 @@
                 <div class="w-full flex justify-between items-center px-4 mb-2">
                     <button class="btn btn-small bg-gray-400 border-gray-600" onclick="backToGrid()">← Back</button>
                     <!-- Large Central Timer -->
-                    <div id="presentation-timer" class="timer-display opacity-0 transition-opacity duration-500 !text-6xl !px-8 !py-2">30</div>
+                    <div id="presentation-timer" class="timer-display opacity-0 transition-opacity duration-500 !text-6xl !px-8 !py-2">60</div>
                     <button class="btn btn-small btn-green" onclick="revealPresentationWord()">Reveal Answer</button>
                 </div>
 
@@ -590,82 +590,85 @@
         }
 
         // --- State Management ---
-        // Pre-configured questions and images for Round 1 & Round 2
+        // Pre-configured questions and images for Round 1 & Round 2 (Randomly shuffled)
         let state = {
-            timerDuration: 30,
+            timerDuration: 60,
             imgbbApiKey: '',
             currentRound: 1,
             timer: null,
-            timeRemaining: 30,
+            timeRemaining: 60,
             activeCardId: null,
             completedCards: { 1: [], 2: [] },
             rounds: {
                 1: [
-                    { id: 1, word: 'BASKETBALL', img: 'BASKETBALL.jpeg' },
-                    { id: 2, word: 'BUTTERFLY', img: 'BUTTERFLY.avif' },
-                    { id: 3, word: 'CHOCOLATE', img: 'CHOCOLATE.jpg' },
-                    { id: 4, word: 'COMPUTER', img: 'COMPUTER.jpg' },
+                    { id: 1, word: 'PINEAPPLE', img: 'PINEAPPLE.jpg' },
+                    { id: 2, word: 'KITCHEN', img: 'KITCHEN.webp' },
+                    { id: 3, word: 'SANDWICH', img: 'SANDWICH.jpg' },
+                    { id: 4, word: 'HOSPITAL', img: 'HOSPITAL.jpg' },
                     { id: 5, word: 'CRICKET', img: 'CRICKET.avif' },
-                    { id: 6, word: 'CROCODILE', img: 'CROCODILE.jpeg' },
-                    { id: 7, word: 'FOOTBALL', img: 'FOOTBALL.webp' },
-                    { id: 8, word: 'GYMNASTICS', img: 'GYMNASTICS.avif' },
-                    { id: 9, word: 'HELICOPTER', img: 'HELICOPTER.png.avif' },
-                    { id: 10, word: 'HOSPITAL', img: 'HOSPITAL.jpg' },
-                    { id: 11, word: 'KITCHEN', img: 'KITCHEN.webp' },
-                    { id: 12, word: 'LIFEGUARD', img: 'LIFEGUARD.avif' },
-                    { id: 13, word: 'MEDICINE', img: 'MEDICINE.avif' },
-                    { id: 14, word: 'MICROSCOPE', img: 'MICROSCOPE.avif' },
-                    { id: 15, word: 'MOUSTACHE', img: 'MOUSTACHE.png' },
-                    { id: 16, word: 'PINEAPPLE', img: 'PINEAPPLE.jpg' },
-                    { id: 17, word: 'FIREFIGHTER', img: 'FIREFIGHTER.avif' },
-                    { id: 18, word: 'PLASTER', img: 'PLASTER.png' },
-                    { id: 19, word: 'PLAYGROUND', img: 'PLAYGROUND.png' },
-                    { id: 20, word: 'RESTAURANT', img: 'RESTAURANT.png' },
-                    { id: 21, word: 'SANDWICH', img: 'SANDWICH.jpg' },
-                    { id: 22, word: 'SAUSAGE', img: 'SAUSAGE.jpg' },
-                    { id: 23, word: 'SLIPPERS', img: 'SLIPPERS.avif' },
-                    { id: 24, word: 'SNOWMOBILE', img: 'SNOWMOBILE.png' },
-                    { id: 25, word: 'SUITCASE', img: 'SUITCASE.avif' },
-                    { id: 26, word: 'TROUSERS', img: 'TROUSERS.jpg' },
-                    { id: 27, word: 'WATERMELON', img: 'WATERMELON.jpeg' }
+                    { id: 6, word: 'DICTIONARY', img: 'DICTIONARY.jpg' },
+                    { id: 7, word: 'SLIPPERS', img: 'SLIPPERS.avif' },
+                    { id: 8, word: 'WATERMELON', img: 'WATERMELON.jpeg' },
+                    { id: 9, word: 'COMPUTER', img: 'COMPUTER.jpg' },
+                    { id: 10, word: 'GYMNASTICS', img: 'GYMNASTICS.avif' },
+                    { id: 11, word: 'SAUSAGE', img: 'SAUSAGE.jpg' },
+                    { id: 12, word: 'ELEPHANT', img: 'ELEPHANT.jpg' },
+                    { id: 13, word: 'BUTTERFLY', img: 'BUTTERFLY.avif' },
+                    { id: 14, word: 'FOOTBALL', img: 'FOOTBALL.webp' },
+                    { id: 15, word: 'TROUSERS', img: 'TROUSERS.jpg' },
+                    { id: 16, word: 'PLAYGROUND', img: 'PLAYGROUND.png' },
+                    { id: 17, word: 'DENTIST', img: 'DENTIST.jpg' },
+                    { id: 18, word: 'SNOWMOBILE', img: 'SNOWMOBILE.png' },
+                    { id: 19, word: 'CROCODILE', img: 'CROCODILE.jpeg' },
+                    { id: 20, word: 'CHOCOLATE', img: 'CHOCOLATE.jpg' },
+                    { id: 21, word: 'HELICOPTER', img: 'HELICOPTER.png' },
+                    { id: 22, word: 'FIREFIGHTER', img: 'FIREFIGHTER.avif' },
+                    { id: 23, word: 'MEDICINE', img: 'MEDICINE.avif' },
+                    { id: 24, word: 'RESTAURANT', img: 'RESTAURANT.png' },
+                    { id: 25, word: 'BASKETBALL', img: 'BASKETBALL.jpeg' },
+                    { id: 26, word: 'PLASTER', img: 'PLASTER.png' },
+                    { id: 27, word: 'MICROSCOPE', img: 'MICROSCOPE.avif' },
+                    { id: 28, word: 'LIFEGUARD', img: 'LIFEGUARD.avif' },
+                    { id: 29, word: 'SUITCASE', img: 'SUITCASE.avif' },
+                    { id: 30, word: 'MOUSTACHE', img: 'MOUSTACHE.png' }
                 ],
                 2: [
-                    { id: 1, word: 'BALL', img: 'BALL.jpg' },
-                    { id: 2, word: 'BIRD', img: 'BIRD.png' },
-                    { id: 3, word: 'BOOK', img: 'BOOK.png' },
-                    { id: 4, word: 'BREAD', img: 'BREAD.jpeg' },
-                    { id: 5, word: 'CAKE', img: 'CAKE.jpg' },
-                    { id: 6, word: 'CLOCK', img: 'CLOCK.jpg' },
-                    { id: 7, word: 'CLOUD', img: 'CLOUD.png' },
-                    { id: 8, word: 'DESK', img: 'DESK.png' },
-                    { id: 9, word: 'DOLL', img: 'DOLL.jpg' },
-                    { id: 10, word: 'DOOR', img: 'DOOR.jpg' },
-                    { id: 11, word: 'DUCK', img: 'DUCK.avif' },
-                    { id: 12, word: 'FISH', img: 'FISH.avif' },
-                    { id: 13, word: 'FROG', img: 'FROG.avif' },
-                    { id: 14, word: 'GAME', img: 'GAME.jpg' },
-                    { id: 15, word: 'GOAT', img: 'GOAT.jpeg' },
-                    { id: 16, word: 'GRASS', img: 'GRASS.jpeg' },
-                    { id: 17, word: 'HORSE', img: 'HORSE.jpg' },
-                    { id: 18, word: 'KITE', img: 'KITE.jpeg' },
-                    { id: 19, word: 'LEAF', img: 'LEAF.avif' },
-                    { id: 20, word: 'MILK', img: 'MILK.jpeg' },
-                    { id: 21, word: 'BALL', img: 'BALL_2.jpg' },
-                    { id: 22, word: 'MOUSE', img: 'MOUSE.avif' },
-                    { id: 23, word: 'PLANT', img: 'PLANT.jpeg' },
-                    { id: 24, word: 'RAIN', img: 'RAIN.png' },
-                    { id: 25, word: 'RESTAURANT', img: 'RESTAURANT_2.png' },
-                    { id: 26, word: 'RICE', img: 'RICE.jpg' },
-                    { id: 27, word: 'RULER', img: 'RULER.jpg' },
-                    { id: 28, word: 'SHIRT', img: 'SHIRT.png' },
-                    { id: 29, word: 'TREE', img: 'TREE.jpeg' },
-                    { id: 30, word: 'WIND', img: 'WIND.jpg' }
+                    { id: 1, word: 'RULER', img: 'RULER.jpg' },
+                    { id: 2, word: 'MILK', img: 'MILK.jpeg' },
+                    { id: 3, word: 'CAKE', img: 'CAKE.jpg' },
+                    { id: 4, word: 'WIND', img: 'WIND.jpg' },
+                    { id: 5, word: 'FISH', img: 'FISH.avif' },
+                    { id: 6, word: 'BALL', img: 'BALL_2.jpg' },
+                    { id: 7, word: 'HORSE', img: 'HORSE.jpg' },
+                    { id: 8, word: 'RAIN', img: 'RAIN.png' },
+                    { id: 9, word: 'LEAF', img: 'LEAF.avif' },
+                    { id: 10, word: 'DESK', img: 'DESK.png' },
+                    { id: 11, word: 'BIRD', img: 'BIRD.png' },
+                    { id: 12, word: 'GRASS', img: 'GRASS.jpeg' },
+                    { id: 13, word: 'DOLL', img: 'DOLL.jpg' },
+                    { id: 14, word: 'TREE', img: 'TREE.jpeg' },
+                    { id: 15, word: 'CLOUD', img: 'CLOUD.png' },
+                    { id: 16, word: 'RICE', img: 'RICE.jpg' },
+                    { id: 17, word: 'BREAD', img: 'BREAD.jpeg' },
+                    { id: 18, word: 'MOUSE', img: 'MOUSE.avif' },
+                    { id: 19, word: 'DOOR', img: 'DOOR.jpg' },
+                    { id: 20, word: 'GOAT', img: 'GOAT.jpeg' },
+                    { id: 21, word: 'PLANT', img: 'PLANT.jpeg' },
+                    { id: 22, word: 'GAME', img: 'GAME.jpg' },
+                    { id: 23, word: 'BALL', img: 'BALL.jpg' },
+                    { id: 24, word: 'RESTAURANT', img: 'RESTAURANT_2.png' },
+                    { id: 25, word: 'DUCK', img: 'DUCK.avif' },
+                    { id: 26, word: 'SHIRT', img: 'SHIRT.png' },
+                    { id: 27, word: 'CLOCK', img: 'CLOCK.jpg' },
+                    { id: 28, word: 'BOOK', img: 'BOOK.png' },
+                    { id: 29, word: 'FROG', img: 'FROG.avif' },
+                    { id: 30, word: 'KITE', img: 'KITE.jpeg' }
                 ]
             }
         };
 
-        // Key has been changed so it does not load old cached dummy data
-        const STORAGE_KEY = 'spellingBeeState_v8'; 
+        // Key bumped to v11 so it clears the cache and applies the new shuffled lists
+        const STORAGE_KEY = 'spellingBeeState_v11'; 
 
         // Load saved state from local storage on startup
         function loadFromLocal() {
