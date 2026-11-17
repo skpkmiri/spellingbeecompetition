@@ -68,6 +68,23 @@
         .cloud-2::before { width: 80px; height: 80px; top: -40px; left: 25px; }
         .cloud-2::after { width: 60px; height: 60px; top: -25px; left: 85px; }
 
+        /* Additional Clouds for a cheerful sky */
+        .cloud-3 { width: 100px; height: 30px; top: 5%; left: -150px; animation-duration: 35s; animation-delay: 5s; opacity: 0.8; transform: scale(0.8); }
+        .cloud-3::before { width: 50px; height: 50px; top: -25px; left: 15px; }
+        .cloud-3::after { width: 30px; height: 30px; top: -15px; left: 55px; }
+
+        .cloud-4 { width: 180px; height: 60px; top: 15%; left: -250px; animation-duration: 65s; animation-delay: 2s; opacity: 0.7; }
+        .cloud-4::before { width: 90px; height: 90px; top: -45px; left: 30px; }
+        .cloud-4::after { width: 70px; height: 70px; top: -35px; left: 95px; }
+
+        .cloud-5 { width: 140px; height: 45px; top: 35%; left: -200px; animation-duration: 45s; animation-delay: 25s; opacity: 0.9; transform: scale(0.9); }
+        .cloud-5::before { width: 70px; height: 70px; top: -35px; left: 20px; }
+        .cloud-5::after { width: 50px; height: 50px; top: -25px; left: 75px; }
+
+        .cloud-6 { width: 80px; height: 25px; top: 20%; left: -100px; animation-duration: 80s; animation-delay: 10s; opacity: 0.5; transform: scale(0.6); }
+        .cloud-6::before { width: 40px; height: 40px; top: -20px; left: 10px; }
+        .cloud-6::after { width: 25px; height: 25px; top: -10px; left: 45px; }
+
         @keyframes drift {
             from { transform: translateX(-200px); }
             to { transform: translateX(110vw); }
@@ -380,6 +397,10 @@
         <!-- Clouds -->
         <div class="cloud cloud-1"></div>
         <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="cloud cloud-4"></div>
+        <div class="cloud cloud-5"></div>
+        <div class="cloud cloud-6"></div>
         
         <!-- Flying Bees -->
         <div class="bee-container bee-1">
@@ -544,7 +565,7 @@
                         </div>
                         <!-- Back (Picture + Word) -->
                         <div class="absolute inset-0 rounded-3xl border-8 border-white bg-white flex items-center justify-center overflow-hidden shadow-2xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
-                            <img id="presentation-img" src="" class="w-full h-full object-contain p-4">
+                            <img id="presentation-img" src="" class="w-full h-full object-contain p-4" onerror="this.onerror=null; this.src='https://placehold.co/600x400/f1f5f9/64748b?text=Gambar+Gagal+Dimuatkan';">
                             <!-- Hidden Word Overlay -->
                             <div id="presentation-word" class="absolute inset-0 bg-blue-900 bg-opacity-90 flex items-center justify-center text-6xl sm:text-8xl md:text-9xl text-white font-heading opacity-0 transition-opacity duration-500 pointer-events-none drop-shadow-xl" style="-webkit-text-stroke: 3px #1e3a8a;">WORD</div>
                         </div>
@@ -609,18 +630,42 @@
                     { id: 27, word: 'WATERMELON', img: 'WATERMELON.jpeg' }
                 ],
                 2: [
-                    { id: 1, word: 'DENTIST', img: 'DENTIST.png' },
-                    { id: 2, word: 'DICTIONARY', img: 'DICTIONARY.jpeg' },
-                    { id: 3, word: 'ELEPHANT', img: 'ELEPHANT.webp' },
-                    { id: 4, word: 'MONKEY', img: createSvgUrl('d97706', 'Monkey') },
-                    { id: 5, word: 'BANANA', img: createSvgUrl('eab308', 'Banana') },
-                    { id: 6, word: 'GUITAR', img: createSvgUrl('8b5cf6', 'Guitar') }
+                    { id: 1, word: 'BALL', img: 'BALL.jpg' },
+                    { id: 2, word: 'BIRD', img: 'BIRD.png' },
+                    { id: 3, word: 'BOOK', img: 'BOOK.png' },
+                    { id: 4, word: 'BREAD', img: 'BREAD.jpeg' },
+                    { id: 5, word: 'CAKE', img: 'CAKE.jpg' },
+                    { id: 6, word: 'CLOCK', img: 'CLOCK.jpg' },
+                    { id: 7, word: 'CLOUD', img: 'CLOUD.png' },
+                    { id: 8, word: 'DESK', img: 'DESK.png' },
+                    { id: 9, word: 'DOLL', img: 'DOLL.jpg' },
+                    { id: 10, word: 'DOOR', img: 'DOOR.jpg' },
+                    { id: 11, word: 'DUCK', img: 'DUCK.avif' },
+                    { id: 12, word: 'FISH', img: 'FISH.avif' },
+                    { id: 13, word: 'FROG', img: 'FROG.avif' },
+                    { id: 14, word: 'GAME', img: 'GAME.jpg' },
+                    { id: 15, word: 'GOAT', img: 'GOAT.jpeg' },
+                    { id: 16, word: 'GRASS', img: 'GRASS.jpeg' },
+                    { id: 17, word: 'HORSE', img: 'HORSE.jpg' },
+                    { id: 18, word: 'KITE', img: 'KITE.jpeg' },
+                    { id: 19, word: 'LEAF', img: 'LEAF.avif' },
+                    { id: 20, word: 'MILK', img: 'MILK.jpeg' },
+                    { id: 21, word: 'BALL', img: 'BALL_2.jpg' },
+                    { id: 22, word: 'MOUSE', img: 'MOUSE.avif' },
+                    { id: 23, word: 'PLANT', img: 'PLANT.jpeg' },
+                    { id: 24, word: 'RAIN', img: 'RAIN.png' },
+                    { id: 25, word: 'RESTAURANT', img: 'RESTAURANT_2.png' },
+                    { id: 26, word: 'RICE', img: 'RICE.jpg' },
+                    { id: 27, word: 'RULER', img: 'RULER.jpg' },
+                    { id: 28, word: 'SHIRT', img: 'SHIRT.png' },
+                    { id: 29, word: 'TREE', img: 'TREE.jpeg' },
+                    { id: 30, word: 'WIND', img: 'WIND.jpg' }
                 ]
             }
         };
 
         // Key has been changed so it does not load old cached dummy data
-        const STORAGE_KEY = 'spellingBeeState_v5'; 
+        const STORAGE_KEY = 'spellingBeeState_v8'; 
 
         // Load saved state from local storage on startup
         function loadFromLocal() {
